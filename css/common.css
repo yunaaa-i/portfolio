@@ -1,0 +1,30 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Noto+Sans+KR:wght@100..900&family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Archivo+Narrow");
+
+:root {
+  --bg-col: #002475;
+  --sub-col: #234289;
+  --point-col: #ff6d5f;
+  --black1-col: #e4e3e2;
+  --black2-col: #bcbcbc;
+  --black3-col: #2a2b2d;
+  --white1-col: #ffffff;
+  --white2-col: #f1f1f1;
+  --en-h-font: "Wittgenstein", serif;
+  --en-p-font: "Afacad", sans-serif;
+  --kr-p-font: "Noto Sans KR", serif;
+  --kr-h-font: 'Pretendard';
+  --font-size: 16px;
+
+  @media screen and (max-width: 800px) {
+    --gutter: 26px;
+  }
+}
+
+body {
+  font-family: var(--kr-p-font);
+  color: var(--white1-col);
+  background-color: var(--black3-col);
+  /* cursor: none; */
+}

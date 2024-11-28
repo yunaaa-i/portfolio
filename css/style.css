@@ -1,0 +1,379 @@
+@charset "utf-8";
+
+.wrap {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Header 네비게이션 시작*/
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    transition: .5s;
+    z-index: 100;
+}
+
+header.on {
+    top: -80px;
+}
+
+header nav {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+ul.main_gnb {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+ul.main_gnb li>a:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: auto;
+    height: 5px;
+    margin: auto;
+    background: #211cff;
+    z-index: 1;
+    transition: ease all 0.3s;
+    transition: ease all 0.3s;
+    -moz-transition: ease all 0.3s;
+    -ms-transition: ease all 0.3s;
+    -o-transition: ease all 0.3s;
+}
+
+ /* main-gnb hover 할 때 파란색 라인 */
+
+ ul.main_gnb li>a.current:after,
+ ul.main_gnb li>a:hover:after {
+     width: 100%
+ }
+
+ ul.main_gnb:hover li a {
+     color: #555
+ }
+
+ /* main-gnb hover시에 나머지 메뉴 색상 #555 */
+ ul.main_gnb li a:hover {
+     text-decoration: none;
+     color: #fff
+ }
+
+
+ ul.main_gnb li>a {
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: var(--black2-col);
+    transition: .6s;
+    font-family: var(--en-p-font);
+}
+
+ul.main_gnb li:hover a {
+    font-weight: 400;
+}
+/* Header 네비게이션 끝*/
+
+
+/* Performance 시작 */
+.performance>p {
+    font-size: 3rem;
+}
+
+@keyframes bounce {
+    100% {
+        transform: translateY(-20%);
+    }
+}
+
+.performance {
+    width: 100%;
+    height: 530vh;
+    background: var(--bg-col);
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sticky_background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 90px;
+    position: relative;
+}
+
+.sticky_background>p {
+    font-family: var(--kr-p-font);
+    font-size: 1.8rem;
+    position: absolute;
+    right: 0;
+    top: 180px;
+}
+
+.sticky_background>h2 {
+    font-size: 20rem;
+    font-family: var(--en-p-font);
+    font-weight: 800;
+    color: var(--sub-col);
+    padding-top: 120px;
+}
+
+.card_frame {
+    position: absolute;
+    width: 95vw;
+    height: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.card {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    transform-style: preserve-3d;
+    position: relative;
+    transform: perspective(100vw) translateX(100vw) rotateY(180deg);
+    transition: transform 0.1s;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.front {
+    background: var(--white1-col);
+    color: var(--bg-col);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.front>h3 {
+    font-family: var(--en-h-font);
+    font-size: 5.2rem;
+    font-weight: 500;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+
+.front>p {
+    font-family: var(--kr-p-font);
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background: var(--bg-col);
+    border: 1px solid var(--white1-col);
+    background-size: 100%;
+    font-family: var(--en-h-font);
+    font-size: 6rem;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (orientation:portrait) {
+    .card_frame {
+        display: grid;
+        height: initial;
+        width: initial;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10vw;
+        justify-items: center;
+    }
+
+    .card {
+        font-size: 20vw;
+        width: 35vw;
+        height: 50vw;
+    }
+}
+/* Performance 끝 */
+
+
+/* Skills 시작 */
+.skills {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bg-col);
+}
+
+/* skill_text 떨어짐 */
+.playground {
+    font-family: var(--en-p-font);
+    font-size: 2.4rem;
+    width: 90%;
+    height: 470px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+#helper {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.menu_item {
+    border-radius: 1.5em;
+    box-shadow: inset 0 0 0 0.1em currentColor;
+    font-size: 1.8rem;
+    position: absolute;
+    padding: 0.75em  1em;
+}
+
+.menu_item:hover {
+    background-color: var(--sub1-col);
+}
+
+.skills .text {
+    width: 90%;
+    height: 1000px;
+}
+
+.skills .skill_box {
+    width: 100%;
+    height: 480px;
+    padding-top: 40px;
+}
+
+.skills h2 {
+    font-size: 12rem;
+    color: var(--sub-col);
+    font-family: var(--en-h-font);
+    font-style: italic;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.skills h2 b {
+    font-family: var(--en-p-font);
+    font-style: normal;
+}
+
+.skills .skill_tit h2 {
+    font-family: var(--en-p-font);
+}
+
+.skills .pg_skill {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 80px;
+    color: var(--point-col);
+}
+/* Skills 끝 */
+
+
+/* thanks Section */
+.thanks {
+    width: 100%;
+    height: 100vh;
+    background: var(--black1-col);
+    color: var(--bg-col);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thanks .license {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    padding-top: 30px;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.thanks .license h4 {
+    font-family: var(--en-p-font);
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.thanks .license p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+.thanks .thanks_tit {
+    width: 100%;
+    height: 400px;
+}
+
+.thanks h2 {
+    font-size: 5rem;
+    font-family: var(--en-p-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thanks img {
+    width: 229px;
+    height: 207px;
+    text-align: center;
+}
+
+.thanks .thanks_txt {
+    width: 3000px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.thanks .thanks_txt p {
+    font-size: 2rem;
+    font-family: var(--en-h-font);
+    font-style: italic;
+    color: var(--white1-col);
+}
