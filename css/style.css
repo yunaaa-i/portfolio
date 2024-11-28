@@ -35,6 +35,10 @@ ul.main_gnb {
     list-style: none;
 }
 
+ul.main_gnb li>a {
+    position: relative;
+}
+
 ul.main_gnb li>a:after {
     content: ' ';
     position: absolute;
@@ -42,10 +46,10 @@ ul.main_gnb li>a:after {
     left: 0;
     bottom: 0;
     display: block;
-    width: auto;
-    height: 5px;
+    width: 0;
+    height: 2px;
     margin: auto;
-    background: #211cff;
+    background: var(--point-col);
     z-index: 1;
     transition: ease all 0.3s;
     transition: ease all 0.3s;
@@ -54,25 +58,25 @@ ul.main_gnb li>a:after {
     -o-transition: ease all 0.3s;
 }
 
- /* main-gnb hover 할 때 파란색 라인 */
+/* main-gnb hover 할 때 파란색 라인 */
 
- ul.main_gnb li>a.current:after,
- ul.main_gnb li>a:hover:after {
-     width: 100%
- }
+ul.main_gnb li>a.current::after,
+ul.main_gnb li>a:hover::after {
+    width: 100%
+}
 
- ul.main_gnb:hover li a {
-     color: #555
- }
+ul.main_gnb:hover li a {
+    color: #555
+}
 
- /* main-gnb hover시에 나머지 메뉴 색상 #555 */
- ul.main_gnb li a:hover {
-     text-decoration: none;
-     color: #fff
- }
+/* main-gnb hover시에 나머지 메뉴 색상 #555 */
+ul.main_gnb li a:hover {
+    text-decoration: none;
+    color: #fff
+}
 
 
- ul.main_gnb li>a {
+ul.main_gnb li>a {
     font-size: 1.5rem;
     font-weight: 200;
     color: var(--black2-col);
@@ -83,14 +87,11 @@ ul.main_gnb li>a:after {
 ul.main_gnb li:hover a {
     font-weight: 400;
 }
+
 /* Header 네비게이션 끝*/
 
 
 /* Performance 시작 */
-.performance>p {
-    font-size: 3rem;
-}
-
 @keyframes bounce {
     100% {
         transform: translateY(-20%);
@@ -113,7 +114,7 @@ ul.main_gnb li:hover a {
     overflow: hidden;
 }
 
-.sticky_background {
+.sticky_title {
     width: 100%;
     height: 100%;
     display: flex;
@@ -124,15 +125,22 @@ ul.main_gnb li:hover a {
     position: relative;
 }
 
-.sticky_background>p {
+.sticky_title .list li {
     font-family: var(--kr-p-font);
     font-size: 1.8rem;
     position: absolute;
+    top: 0;
     right: 0;
-    top: 180px;
+    /* width: 100%; */
 }
 
-.sticky_background>h2 {
+.sticky_title .list.cloned{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.sticky_title>h2 {
     font-size: 20rem;
     font-family: var(--en-p-font);
     font-weight: 800;
@@ -169,6 +177,7 @@ ul.main_gnb li:hover a {
     height: 80%;
     overflow: hidden;
     backface-visibility: hidden;
+    cursor: default;
 }
 
 .front {
@@ -226,6 +235,7 @@ ul.main_gnb li:hover a {
         height: 50vw;
     }
 }
+
 /* Performance 끝 */
 
 
@@ -264,7 +274,8 @@ ul.main_gnb li:hover a {
     box-shadow: inset 0 0 0 0.1em currentColor;
     font-size: 1.8rem;
     position: absolute;
-    padding: 0.75em  1em;
+    padding: 0.75em 1em;
+    cursor: default;
 }
 
 .menu_item:hover {
@@ -308,6 +319,7 @@ ul.main_gnb li:hover a {
     padding-top: 80px;
     color: var(--point-col);
 }
+
 /* Skills 끝 */
 
 

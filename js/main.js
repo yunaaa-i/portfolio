@@ -34,14 +34,14 @@ $(function () {
     const WALL_THICKNESS = 80;
     const MATTER_CONTAINER = document.querySelector("#skill_all");
     const MATTER_HELPER = document.querySelector("#helper");
-  
+
     let Engine = Matter.Engine,
       Render = Matter.Render,
       Runner = Matter.Runner,
       Bodies = Matter.Bodies,
       World = Matter.World,
       Composite = Matter.Composite;
-  
+
     let engine = Engine.create();
     let render = Render.create({
       element: MATTER_HELPER,
@@ -52,15 +52,15 @@ $(function () {
         height: MATTER_CONTAINER.offsetHeight,
       },
     });
-  
+
     let domBodies = document.querySelectorAll(".menu_item");
     let matterBodies = {};
     let runner;
     let leftWall, rightWall, ground;
-  
+
     // 해당 섹션 도달 시 모션 초기화 여부를 확인하는 플래그 변수
     let isInitialized = false;
-  
+
     // Intersection Observer로 특정 섹션 감지
     const observer = new IntersectionObserver(
       (entries) => {
@@ -73,10 +73,10 @@ $(function () {
       },
       { threshold: 0.5 } // 섹션이 뷰포트에 얼마나 보여야 실행할지 설정
     );
-  
+
     // #skill_all 섹션 감시 시작
     observer.observe(MATTER_CONTAINER);
-  
+
     function init() {
       createBounds();
       // 애니메이션 초기화 함수
@@ -93,7 +93,7 @@ $(function () {
       window.requestAnimationFrame(updateElementPositions);
       window.addEventListener("resize", () => handleResize());
     }
-  
+
 
     function createBounds() {
       ground = Bodies.rectangle(
@@ -103,7 +103,7 @@ $(function () {
         WALL_THICKNESS,
         { isStatic: true }
       );
-  
+
       leftWall = Bodies.rectangle(
         0 - WALL_THICKNESS / 2,
         MATTER_CONTAINER.offsetHeight / 2,
@@ -111,7 +111,7 @@ $(function () {
         MATTER_CONTAINER.offsetHeight * 5,
         { isStatic: true }
       );
-  
+
       rightWall = Bodies.rectangle(
         MATTER_CONTAINER.offsetWidth + WALL_THICKNESS / 2,
         MATTER_CONTAINER.offsetHeight / 2,
@@ -120,7 +120,7 @@ $(function () {
         { isStatic: true }
       );
     }
-  
+
     function createMatterBodies() {
       domBodies.forEach(function (domBody, index) {
         let matterBody = Bodies.rectangle(
@@ -132,7 +132,7 @@ $(function () {
             chamfer: {
               radius: domBody.offsetHeight / 2,
             },
-  
+
             restitution: 0.925,
             density: Math.random() * 15,
             angle: Math.random() * 10,
@@ -140,16 +140,16 @@ $(function () {
             frictionAir: Math.random() / 150,
           }
         );
-  
+
         domBody.id = matterBody.id;
         matterBodies[matterBody.id] = matterBody;
       });
     }
-  
+
     function updateElementPositions() {
       domBodies.forEach((domBody, index) => {
         let matterBody = matterBodies[domBody.id];
-  
+
         if (matterBody) {
           domBody.style.transform =
             "translate( " +
@@ -164,16 +164,16 @@ $(function () {
           domBody.style.transform += "rotate( " + matterBody.angle + "rad )";
         }
       });
-  
+
       window.requestAnimationFrame(updateElementPositions);
     }
-  
+
     function handleResize() {
       render.canvas.width = MATTER_CONTAINER.offsetWidth;
       render.canvas.height = MATTER_CONTAINER.offsetHeight;
-  
+
       Matter.Render.setPixelRatio(render, window.devicePixelRatio);
-  
+
       Matter.Body.setPosition(
         ground,
         Matter.Vector.create(
@@ -181,12 +181,12 @@ $(function () {
           MATTER_CONTAINER.offsetHeight + WALL_THICKNESS / 2
         )
       );
-  
+
       Matter.Body.setPosition(
         leftWall,
         Matter.Vector.create(0 - WALL_THICKNESS / 2, MATTER_CONTAINER.offsetHeight / 2)
       );
-  
+
       Matter.Body.setPosition(
         rightWall,
         Matter.Vector.create(
@@ -198,7 +198,76 @@ $(function () {
   })();
 
   //skill_text 떨어짐 끝
-  
+
+  //performance 서브텍스트 모션 시작
+  jQuery(function ($) {
+    $(".sticky_title").each(function (ix, ex) {
+        var $floatinPostsWrapper = $(ex);
+        var $list = $floatinPostsWrapper.find("ul.list");
+        var $clonedList = $list.clone();
+        var listWidth = 4;
+
+        $list.find("li").each(function (i) {
+            listWidth += $(this, i).outerWidth(true);
+        });
+
+        var endPos = $floatinPostsWrapper.width() - listWidth;
+
+        $list.add($clonedList).css({
+            width: listWidth + "px"
+        });
+
+        $clonedList.addClass("cloned").appendTo($floatinPostsWrapper);
+
+        //TimelineMax
+        var infinite = new TimelineMax({ repeat: -1, paused: true });
+        var time = 10;
+
+        infinite
+            .fromTo(
+                $list,
+                time,
+                { rotation: 0.01, x: 0 },
+                { force3D: true, x: -listWidth, ease: Linear.easeNone },
+                0
+            )
+            .fromTo(
+                $clonedList,
+                time,
+                { rotation: 0.01, x: listWidth },
+                { force3D: true, x: 0, ease: Linear.easeNone },
+                0
+            )
+            .set($list, { force3D: true, rotation: 0.01, x: listWidth })
+            .to(
+                $clonedList,
+                time,
+                { force3D: true, rotation: 0.01, x: -listWidth, ease: Linear.easeNone },
+                time
+            )
+            .to(
+                $list,
+                time,
+                { force3D: true, rotation: 0.01, x: 0, ease: Linear.easeNone },
+                time
+            )
+            .progress(1)
+            .progress(0)
+            .play();
+
+        //Pause/Play
+        $floatinPostsWrapper
+            .on("mouseenter", function () {
+                infinite.pause();
+            })
+            .on("mouseleave", function () {
+                infinite.play();
+            });
+    });
+});
+  //performance 서브텍스트 모션 끝
+
+
 
   //performance 모션 시작
   class CardFlipOnScroll {

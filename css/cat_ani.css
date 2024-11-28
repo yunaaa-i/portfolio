@@ -14,7 +14,7 @@
 
 .cat_aniall {
   position: absolute;
-  left: 20px;
+  left: 0;
   top: 100px;
   display: flex;
   height: 200px;
@@ -33,10 +33,6 @@
   overflow: visible;
 }
 
-.cat_aniall .cat_wrapper {
-  width: 300px;
-}
-
 .cat_aniall .eyes circle {
   fill: #000;
 }
@@ -45,95 +41,6 @@
 .cat_aniall .backlegs {
   opacity: 1;
 }
-
-/* .cat_aniall .logoani {
-  align-self: flex-end;
-  margin-left: -25px;
-  font-size: 4rem;
-  font-weight: 600;
-  font-family: var(--en-p-font);
-} */
-
-/* .cat_aniall .restart {
-  display: none;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  background-color: white;
-  border: #bbbbbb 1px solid;
-  box-shadow: none;
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 1000;
-  background: lavender;
-}
-
-.cat_aniall .restart:hover {
-  background-color: #ddd;
-}
-
-.cat_aniall .restart.visible {
-  display: block;
-}
-
-.cat_aniall .layout {
-  display: block;
-  opacity: 1;
-  width: 80%;
-  position: absolute;
-  top: 40px;
-  transition: opacity 1s;
-}
-
-.cat_aniall .layout.notvisible {
-  display: none;
-  opacity: 0;
-}
-
-.cat_aniall .layout li {
-  height: 15px;
-  background-color: #bbbbbb;
-}
-
-.cat_aniall .layout ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.cat_aniall .layout li {
-  width: 50px;
-  margin-left: 20px;
-  list-style: none;
-  background-color: #bbbbbb;
-}
-
-.cat_aniall .layout .layout__nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cat_aniall .layout .layout__nav-left,
-.cat_aniall .layout .layout__nav-right {
-  width: 40%;
-}
-
-.cat_aniall .layout .layout__nav-left li:first-child {
-  margin-left: 0;
-}
-
-.cat_aniall .layout .layout__nav-right {
-  flex-direction: row-reverse;
-}
-
-.cat_aniall .layout .layout__title {
-  width: 80%;
-  height: 40px;
-  background-color: #bbbbbb;
-/*   margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto; 
-}*/
 
 .cat_aniall .layout .layout__content {
   display: flex;
@@ -202,7 +109,7 @@
   .cat_aniall .logo {
     font-size: 45px;
   }
-} 
+}
 
 .cat_bar {
   content: "";
@@ -218,3 +125,13 @@
 /* main 고양이 애니메이션 시작 */
 
 
+.cat_section .scroll-down {
+  position: absolute;
+  bottom: 80px;
+  opacity: 0;
+  background: yellow;
+}
+
+.cat_section .scroll-down.on {
+  opacity: 1;
+}

@@ -134,4 +134,22 @@ document.addEventListener("DOMContentLoaded", function () {
         onLeaveBack: resetit,  // 스크롤이 위로 돌아올 때 애니메이션 초기화
         once: false,  // 반복 실행 가능하도록 설정
     });
+
+
+    setTimeout(() => {
+        $('.cat_section .scroll-down').addClass('on');
+        setTimeout(() => {
+          window.addEventListener("wheel", function (event) {
+            if (event.deltaY > 0) { // 휠을 아래로 내리는 경우
+              // Step 1: header에 'on' 클래스 추가
+              if (!headerScrolled) {
+                headerScrolled = true;
+                $('body,html').animate({ scrollTop: catsectionTop }, 500, function () {
+                  $('body').removeClass('no-scroll');
+                });
+              }
+            }
+          });
+        }, 500)
+      }, 3000);
 });
