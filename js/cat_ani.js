@@ -1,6 +1,9 @@
 
-//intro 고양이 움직임 모션
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    //intro 고양이 움직임 모션
+
     const cat = document.querySelector('.cat');
     const body = document.querySelector('.body');
     const head = document.querySelector('.head');
@@ -94,8 +97,19 @@ document.addEventListener("DOMContentLoaded", function () {
             .to(tail, 0.1, { y: 150, x: 450, rotation: 35 }, "jump+=0.5")
             .to(backlegs, 0.1, { rotation: 95, x: 430, y: 95 }, "jump+=0.5")
 
-            .to(cat, 0.5, { opacity: 1 }, "jump+=0.3");
+            .to(cat, 0.5, { opacity: 1 }, "jump+=0.3")
+            .addLabel("scrollToCon2")
+            // ScrollToPlugin 사용하여 #con2로 이동
+            .to(window, { 
+                duration: 1, 
+                scrollTo: { y: "#con2", autoKill: false }, // autoKill을 false로 설정
+                ease: "power2.out" ,
 
+            }, "scrollToCon2+=0.1") // 타이밍을 조정
+            .call(() => {
+                // body에서 'fix' 클래스 제거
+                document.body.classList.remove("fix");
+            });
     }
     function logoVisible() {
         ani.classList.add("notvisible");
@@ -135,21 +149,4 @@ document.addEventListener("DOMContentLoaded", function () {
         once: false,  // 반복 실행 가능하도록 설정
     });
 
-
-    setTimeout(() => {
-        $('.cat_section .scroll-down').addClass('on');
-        setTimeout(() => {
-          window.addEventListener("wheel", function (event) {
-            if (event.deltaY > 0) { // 휠을 아래로 내리는 경우
-              // Step 1: header에 'on' 클래스 추가
-              if (!headerScrolled) {
-                headerScrolled = true;
-                $('body,html').animate({ scrollTop: catsectionTop }, 500, function () {
-                  $('body').removeClass('no-scroll');
-                });
-              }
-            }
-          });
-        }, 500)
-      }, 3000);
 });
