@@ -44,9 +44,8 @@
   /* mix-blend-mode: difference; */
   color: #fff;
   overflow: hidden;
-
   width: 100%;
-  height: 480vh;
+  height: 4750px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,20 +53,22 @@
 }
 
 .works .bg_txt {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  position: fixed;
+  /* 스크롤 시 따라오게 고정 */
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  /* transform: translate(-50%, -50%); */
+  text-align: center;
+  transition: transform 0.1s ease-out, opacity 0.3s;
   font-size: 14rem;
-  color: var(--black1-col);
+  line-height: 12rem;
+  color: rgba(182, 182, 182, 0.2);
   font-family: var(--en-p-font);
   font-style: italic;
   font-weight: 700;
-  width: 100%;
-  padding-top: 55%;
+  opacity: 0;
+  /* z-index: 10; */
 }
 
 
@@ -80,9 +81,9 @@
   mix-blend-mode: difference;
   font-size: 1.8rem;
   line-height: 1.8rem;
-  font-weight: 300;
+  font-weight: 200;
   text-align: center;
-  font-family: var(--kr-h-font);
+  /* font-family: var(--kr-h-font); */
 }
 
 .w_text h2 {
@@ -116,28 +117,59 @@
 }
 
 .works .row_2 {
-  width: 85%;
+  width: 79%;
   display: flex;
+  align-items: flex-start;
+  padding-top: 50px;
 }
+
+.works .row_2 a{
+  width: 600px;
+  height: 800px;
+}
+
+.works .row_2 a img{
+  width: 600px;
+  height: 800px;
+}
+
 
 .works .row_3 {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   margin-right: -150px;
+  padding-top: 50px;
+
 }
 
-#works .row_4 {
-  width: 100%;
+.works .row_4 {
+  width: 90%;
   display: flex;
   justify-content: center;
   padding-right: 50px;
+  padding-top: 50px;
+
 }
+
+.works .row_4 a img{
+  width: 700px;
+  height: 900px;
+}
+
+.works .row_4 a img{
+  width: 700px;
+  height: 900px;
+}
+
 
 .works .row_5 {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  padding-top: 50px;
+  margin-left: -15%;
+
 }
 
 
@@ -149,6 +181,7 @@
   text-align: center;
   transition: transform 0.5s ease-in-out;
   cursor: none;
+  z-index: 10;
 }
 
 .clip .title {
@@ -193,8 +226,8 @@
 /* etc works 시작 */
 .etc_wrap {
   width: 100%;
-  height: 100vh;
-  background: var(--black1-col);
+  height: 120vh;
+  background: var(--white1-col);
   overflow: hidden;
   position: relative;
 }
@@ -222,21 +255,39 @@
 }
 
 .modal {
-  width: 500px;
-  height: 300px;
   position: fixed;
+  left:0;
+  top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: none;
+}
+.modal .inner{
+  position: absolute;
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
-  z-index: 100;
+  width: 500px;
+  height: 300px;
   justify-content: center;
   overflow: hidden;
-  display: none;
+  background: #fff;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
 }
 
-.modal.on {
+.modal.active {
   display: flex;
+  /* 플렉스 박스로 설정하여 중앙 정렬 */
 }
+
+/* .modal.on {
+  display: flex;
+} */
 
 .wrap {
   width: 100%;
@@ -248,7 +299,7 @@
 }
 
 .slider_section {
-  height: 32vh;
+  height: 45vh;
   bottom: 0;
   position: absolute;
   width: 100%;
@@ -279,29 +330,43 @@
   cursor: pointer;
 }
 
-.wheel_card .plus {
+.wheel_card h4{
   position: absolute;
-  top: 50%; /* 세로 가운데 정렬 */
-  left: 50%; /* 가로 가운데 정렬 */
+  left: -25%;
+  bottom: -30%;
+  transform: rotate(90deg);
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.wheel_card .card_img .plus {
+  position: absolute;
+  top: 50%;
+  /* 세로 가운데 정렬 */
+  left: 50%;
+  /* 가로 가운데 정렬 */
   border: 1px solid #000;
   border-radius: 50%;
-  transform: translate(-50%, -50%); /* 정확히 가운데 배치 */
+  transform: translate(-50%, -50%);
+  /* 정확히 가운데 배치 */
   font-size: 2.5rem;
   font-weight: 100;
   color: #000;
   opacity: 1;
   z-index: 1;
-  transition: opacity 0.3s ease; /* 호버 시 부드럽게 나타나도록 */
+  transition: opacity 0.3s ease;
+  /* 호버 시 부드럽게 나타나도록 */
   width: 50px;
   height: 50px;
 }
 
-.wheel_card .plus p{
+.wheel_card .card_img .plus p {
   text-align: center;
 }
 
-.wheel_card:hover .plus {
-  opacity: 0; /* hover 시 텍스트가 나타남 */
+.wheel_card .card_img:hover .plus {
+  opacity: 0;
+  /* hover 시 텍스트가 나타남 */
 }
 
 

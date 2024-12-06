@@ -3,14 +3,14 @@
 @import url("https://fonts.googleapis.com/css?family=Archivo+Narrow");
 
 :root {
-  --bg-col: #002475;
-  --sub-col: #234289;
+  --main-col: #002475;
   --point-col: #ff6d5f;
-  --black1-col: #e4e3e2;
-  --black2-col: #bcbcbc;
-  --black3-col: #2a2b2d;
   --white1-col: #ffffff;
-  --white2-col: #f1f1f1;
+  --white2-col: #e8e8e8;
+  --black1-col: #bcbcbc;
+  --bg-col: #2a2b2d;
+  --bg-t-col:rgba(182, 182, 182, 0.2);
+
   --en-h-font: "Wittgenstein", serif;
   --en-p-font: "Afacad", sans-serif;
   --kr-p-font: "Noto Sans KR", serif;
@@ -25,6 +25,6 @@
 body {
   font-family: var(--kr-p-font);
   color: var(--white1-col);
-  background-color: var(--black3-col);
+  background-color: var(--bg-col);
   /* cursor: none; */
 }
