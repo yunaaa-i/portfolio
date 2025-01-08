@@ -181,10 +181,10 @@ $(function () {
             radius: domBody.offsetHeight / 2,
           },
 
-          restitution: 0.925,  // 탄성 설정
-          angle: Math.random() * 10,
-          density: Math.random() * 15, // 밀도 설정
-          friction: Math.random() * 50,// 표면 마찰 설정
+          restitution: 0.200,  // 탄성 설정
+          angle: Math.random() * 5,
+          density: Math.random() * 70, // 밀도 설정
+          friction: Math.random() * 70,// 표면 마찰 설정
           frictionAir: Math.random() / 150,// 공기 저항 설정
         }
       );

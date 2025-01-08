@@ -170,33 +170,43 @@ let wheel = document.querySelector(".wheel");
 let images = gsap.utils.toArray(".wheel_card");
 
 function setup() {
-    let radius = wheel.offsetWidth / 2;
+    // 휠의 반지름 계산 (휠 요소의 너비를 2로 나눔)
+    let radius = wheel.offsetWidth / 2.5;
+
+    // 휠의 중심 위치 (반지름과 동일)
     let center = wheel.offsetWidth / 2;
+
+    // 이미지의 총 개수
     let total = images.length;
+
+    // 각 이미지가 차지하는 각도 (2π를 이미지 개수로 나눔)
     let slice = (2 * Math.PI) / total;
 
+    // 모든 이미지에 대해 위치와 회전 설정
     images.forEach((item, i) => {
+        // 현재 이미지의 각도 (인덱스 i에 따라 계산)
         let angle = i * slice;
 
-        let x = center + radius * Math.sin(angle);
-        let y = center + radius * Math.cos(angle);
+        // 삼각 함수를 사용해 원형 경로의 x, y 좌표 계산
+        let x = center + radius * Math.sin(angle); // x 좌표 계산
+        let y = center + radius * Math.cos(angle); // y 좌표 계산
 
+        // GSAP를 사용해 이미지 설정
         gsap.set(item, {
-            duration: 1,
-            rotation: -angle + "-rad",
-            //rotation: (i) => i * (360 / items.length),
-            xPercent: -50,
-            yPercent: -50,
-            x: x,
-            y: y,
+            duration: 1,                // 애니메이션 지속 시간 (1초)
+            rotation: -angle + "-rad", // 이미지가 각도에 맞게 회전하도록 설정 (라디안 단위)
+            xPercent: -50,             // x축 중심 정렬 (이미지의 중심이 지정된 x 좌표에 위치)
+            yPercent: -50,             // y축 중심 정렬 (이미지의 중심이 지정된 y 좌표에 위치)
+            x: x,                      // 계산된 x 좌표로 이동
+            y: y,                      // 계산된 y 좌표로 이동
         });
     });
 }
 
 // GSAP 및 ScrollTrigger를 사용한 애니메이션
 gsap.to(".wheel", {
-    rotate: () => 180,
-    ease: "none",
+    rotate: () => -360,  // 회전 값을 100도로 설정. 화살표 함수로 값을 반환하여 동적으로 적용 가능.
+    ease: "none",       // 애니메이션의 속도 조절을 없앰 (초기부터 끝까지 일정한 속도로 진행).
     duration: images.length, // 애니메이션 지속 시간 (images 배열 길이에 따라 결정)
     scrollTrigger: {
         trigger: ".etc_wrap", // 트리거 요소 설정
@@ -223,14 +233,6 @@ gsap.to(".wheel", {
 
 setup();
 window.addEventListener("resize", setup);
-
-// $('.wheel_card').hover(function () {
-//     let src = $(this).find('img').attr('src');
-//     src = src.replace('./img/eunwoo', './img/eunwoo_on');
-//     $('.modal').addClass('on').find('img').attr('src', src);
-// }, function () {
-//     $('.modal').removeClass('on')
-// })
 //etc works scroll 이벤트 끝
 
 
@@ -252,42 +254,14 @@ let chk = 0;
 $('.wheel_card').click(function (e) {
     e.preventDefault();
     let currentModalImageSrc = $(this).find('img').attr('src');
-    currentModalImageSrc = currentModalImageSrc.replace('eunwoo', 'eunwoo_on');
+    currentModalImageSrc = currentModalImageSrc.replace('etc_list', 'etc_list_on');
     $('.modal').addClass('active');
     $('.modal img').attr('src', currentModalImageSrc);
 })
 $('.modal').click(function () {
     $(this).removeClass('active');
 });
-/* wheelCards.forEach(card => {
-    card.addEventListener('click', (event) => {
 
-        const imgSrc = card.querySelector('img').getAttribute('src');
-        imgSrc = currentModalImageSrc.replace('eunwoo', 'eunwoo_on');
-        console.log(imgSrc);
-        if (modal.classList.contains('active') && currentModalImageSrc === imgSrc) {
-
-            modal.classList.remove('active');
-            currentModalImageSrc = '';
-        } else {
-
-            modalImage.setAttribute('src', imgSrc);
-            modal.classList.add('active');
-            currentModalImageSrc = imgSrc;
-        }
-    });
-});
- */
-// modal 클릭 이벤트 등록 (배경 클릭 시 모달 닫힘)
-/* modal.addEventListener('click', () => {
-    modal.classList.remove('active');
-    currentModalImageSrc = '';
-}); */
-
-// modal 이미지 클릭 시 이벤트 전파 막기 (모달이 닫히지 않도록)
-/* modalImage.addEventListener('click', (event) => {
-    event.stopPropagation();
-}); */
 
 // card 클릭했을때 modal 생성 끝
 
