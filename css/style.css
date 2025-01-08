@@ -107,7 +107,7 @@ ul.main_gnb li:hover a {
 .bg_gra1 {
     width: 100%;
     height: 500px;
-    background: linear-gradient(180deg, var(--white1-col) 20%, var(--main-col) 80%);
+    background: linear-gradient(0deg, rgba(42,43,45,1) 26%, rgba(73,73,73,1) 43%, rgba(144,144,144,1) 64%, rgba(255,255,255,1) 88%);
 }
 
 .sticky {
@@ -197,27 +197,31 @@ ul.main_gnb li:hover a {
 
 .front {
     background: var(--white1-col);
-    color: var(--main-col);
+    /* color: var(--main-col); */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 30px;
+    color: var(--point-col);
+
 }
 
 .front>h3 {
     font-family: var(--en-h-font);
-    font-size: 5.2rem;
+    font-size: 5rem;
     font-weight: 500;
     font-style: italic;
     padding-bottom: 10px;
+    /* color: var(--point-col); */
 }
 
 .front>p {
     font-family: var(--kr-p-font);
     font-size: 1rem;
     line-height: 1.5rem;
+    color: var(--main-col);
 }
 
 .back {
@@ -315,7 +319,7 @@ ul.main_gnb li:hover a {
     font-style: italic;
     text-align: center;
     font-weight: 600;
-    margin-top: 20px;
+    cursor: default;
 }
 
 .skills h2 b {
@@ -331,16 +335,17 @@ ul.main_gnb li:hover a {
     width: 80%;
     display: flex;
     justify-content: space-between;
-    padding-top: 80px;
+    padding-top: 20px;
     color: var(--point-col);
     font-family: var(--en-p-font);
     font-size: 1.5rem;
+    cursor: default;
 }
 
 .bg_gra2 {
     width: 100%;
     height: 500px;
-    background: linear-gradient(180deg, var(--main-col) 20%, var(--white1-col) 80%);
+    background: linear-gradient(180deg, rgba(42,43,45,1) 26%, rgba(73,73,73,1) 43%, rgba(144,144,144,1) 64%, rgba(255,255,255,1) 88%);
 }
 
 /* Skills 끝 */
@@ -371,7 +376,7 @@ ul.scroll_text_all .scroll_text {
     margin: 0;
     width: 100%;
     color: var(--bg-t-col);
-    background: linear-gradient(to right, var(--bg-col), var(--bg-col)) no-repeat;
+    background: linear-gradient(to right, var(--main-col), var(--main-col)) no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     background-size: 0%;
@@ -406,22 +411,22 @@ ul.scroll_text_all .scroll_text p {
     display: flex;
     flex-direction: column;
     align-self: flex-end;
-    padding-top: 80px;
+    padding-top: 50px;
     padding-right: 30px;
     text-align: right;
-    color: var(--bg-col);
+    color: var(--main-col);
 }
 
 .thanks .license h4 {
     font-family: var(--en-p-font);
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
     padding-bottom: 10px;
 }
 
 .thanks .license p {
-    font-size: 1rem;
-    line-height: 1.2rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
 }
 
 .thanks .thanks_tit {
@@ -436,12 +441,12 @@ ul.scroll_text_all .scroll_text p {
 }
 
 .thanks .thanks_tit h2 {
-    width: 820px;
+    width: 1300px;
     font-size: 5rem;
     line-height: 6rem;
     font-weight: 400;
     font-family: var(--en-p-font);
-    color: var(--bg-col);
+    color: var(--main-col);
 }
 
 .thanks .thanks_tit::after {
@@ -452,7 +457,7 @@ ul.scroll_text_all .scroll_text p {
     left: 10%;
     transition: all 0.25s ease-in-out;
     width: 0;
-    height: 2em;
+    height: 1.7em;
     z-index: -1;
 }
 
@@ -466,7 +471,7 @@ ul.scroll_text_all .scroll_text p {
     height: 90px;
     display: flex;
     align-items: center;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .thanks .thanks_txt p {
@@ -490,7 +495,7 @@ ul.scroll_text_all .scroll_text p {
 .scroll_down {
     display: none;
     position: fixed;
-    bottom: 80px;
+    bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
     height: 40px;

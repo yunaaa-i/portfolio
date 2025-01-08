@@ -3,12 +3,11 @@
 @import url("https://fonts.googleapis.com/css?family=Archivo+Narrow");
 
 :root {
-  --main-col: #002475;
-  --point-col: #ff6d5f;
+  --main-col: #2a2b2d;
+  --point-col: #455cff;
   --white1-col: #ffffff;
   --white2-col: #e8e8e8;
   --black1-col: #bcbcbc;
-  --bg-col: #2a2b2d;
   --bg-t-col:rgba(182, 182, 182, 0.2);
 
   --en-h-font: "Wittgenstein", serif;
@@ -25,6 +24,22 @@
 body {
   font-family: var(--kr-p-font);
   color: var(--white1-col);
-  background-color: var(--bg-col);
+  background-color: var(--main-col);
   /* cursor: none; */
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* 스크롤바의 너비 */
+  height: 12px; /* 스크롤바의 높이 (가로 스크롤바) */
+}
+
+/* 스크롤바의 움직이는 막대 (Thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-col); /* 스크롤바 막대 색상 */
+  border-radius: 10px; /* 막대 모서리를 둥글게 */
+}
+
+/* 스크롤바의 트랙 (스크롤 막대가 움직이는 배경 영역) */
+::-webkit-scrollbar-track {
+  background-color: #fff; /* 트랙 배경 색상 */
 }

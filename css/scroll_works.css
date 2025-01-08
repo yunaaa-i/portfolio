@@ -4,8 +4,8 @@
 /* custom cursor 시작 */
 .custom_cursor {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   background-color: var(--point-col);
   border-radius: 50%;
   z-index: 9999;
@@ -16,19 +16,19 @@
   pointer-events: none;
   align-items: center;
   justify-content: center;
-  font-size: 0.1rem;
+  font-size: 0.09rem;
   display: none;
 }
 
 .custom_cursor::after {
   content: 'Click me';
-  color: #fff;
+  color: var(--white1-col);
   display: none;
 }
 
 .custom_cursor.on {
   transform: translate(-50%, -50%) scale(12);
-  padding-top: 0.65px;
+  padding-top: 0.44px;
 }
 
 .custom_cursor.on::after {
@@ -42,7 +42,7 @@
 /* Works 시작 */
 .works {
   /* mix-blend-mode: difference; */
-  color: #fff;
+  color: var(--white1-col);
   overflow: hidden;
   width: 100%;
   height: 4750px;
@@ -68,7 +68,7 @@
   font-style: italic;
   font-weight: 700;
   opacity: 0;
-  /* z-index: 10; */
+  cursor: default;
 }
 
 
@@ -204,7 +204,6 @@
   line-height: 1.5rem;
   font-family: var(--en-h-font);
   font-style: italic;
-
 }
 
 .title>h4 {
@@ -212,8 +211,14 @@
   font-size: 2.2rem;
   line-height: 3rem;
   font-family: var(--en-p-font);
-
 }
+
+.title>h5 {
+  padding-top: 3px;
+  font-size: 1.1rem;
+  font-family: var(--en-p-font);
+}
+
 
 .clip img {
   height: auto;
@@ -237,7 +242,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 60vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -246,8 +251,8 @@
 }
 
 .etc_title>h2 {
-  font-size: 6rem;
-  line-height: 8rem;
+  font-size: 5.5rem;
+  line-height: 7rem;
   text-align: center;
   font-family: var(--en-h-font);
   font-style: italic;
@@ -268,48 +273,45 @@
   left: 50%;
   top: 100px;
   transform: translateX(-50%);
-  width: 500px;
-  height: 300px;
+  width: auto;
+  height: auto;
   justify-content: center;
   overflow: hidden;
-  background: #fff;
+  background: var(--white1-col);
 }
-.modal img {
+
+/* .modal img {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
-}
+} */
 
 .modal.active {
   display: flex;
   /* 플렉스 박스로 설정하여 중앙 정렬 */
 }
 
-/* .modal.on {
-  display: flex;
-} */
-
-.wrap {
+/* .wrap {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
   margin: 0;
   padding: 0;
-}
+} */
 
 .slider_section {
-  height: 45vh;
+  width: 100%;
+  height: 48vh;
   bottom: 0;
   position: absolute;
-  width: 100%;
+  transform: rotate(180deg);
 }
 
 .wheel {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -290%;
+  /* left: 50%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,20 +326,20 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 8.5%;
+  width: 10%;
   max-width: 200px;
-  aspect-ratio: 1 /1;
+  /* aspect-ratio: 1 /1; */
   cursor: pointer;
 }
 
-.wheel_card h4{
+/* .wheel_card h4{
   position: absolute;
   left: -25%;
   bottom: -30%;
   transform: rotate(90deg);
   font-size: 1rem;
   color: #aaa;
-}
+} */
 
 .wheel_card .card_img .plus {
   position: absolute;
@@ -345,13 +347,13 @@
   /* 세로 가운데 정렬 */
   left: 50%;
   /* 가로 가운데 정렬 */
-  border: 1px solid #000;
+  border: 1px solid var(--main-col);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   /* 정확히 가운데 배치 */
   font-size: 2.5rem;
   font-weight: 100;
-  color: #000;
+  color: var(--main-col);
   opacity: 1;
   z-index: 1;
   transition: opacity 0.3s ease;
