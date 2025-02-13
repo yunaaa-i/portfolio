@@ -1,2 +1,12 @@
 @charset "utf-8";
 
+@media screen and (max-width:375px) {
+    .cat_aniall {display: none;}
+    .cat_bar {display: none;}
+    .cat_section .cat_title h2 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    
+}

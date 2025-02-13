@@ -160,13 +160,16 @@ body{
   height: 100%;
 }
 .cat_section .cat_title h2{
-  font-size: 4rem;
+  font-size: 6rem;
+  letter-spacing: 0.2rem;
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--white1-col);
-  font-family: var(--en-p-font);
+  font-family: var(--en-h-font);
+  font-style: italic;
   width: 100%;
   height: 100%;
 }

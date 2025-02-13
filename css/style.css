@@ -442,10 +442,10 @@ ul.scroll_text_all .scroll_text p {
 
 .thanks .thanks_tit h2 {
     width: 1300px;
-    font-size: 5rem;
-    line-height: 6rem;
-    font-weight: 400;
-    font-family: var(--en-p-font);
+    font-size: 5.8rem;
+    line-height: 7rem;
+    font-weight: 600;
+    font-family: var(---kr-h-font);
     color: var(--main-col);
 }
 
@@ -453,8 +453,8 @@ ul.scroll_text_all .scroll_text p {
     background-color: var(--point-col);
     content: "";
     position: absolute;
-    bottom: 10%;
-    left: 10%;
+    bottom: 15%;
+    left: 30%;
     transition: all 0.25s ease-in-out;
     width: 0;
     height: 1.7em;
@@ -462,7 +462,7 @@ ul.scroll_text_all .scroll_text p {
 }
 
 .thanks .thanks_tit:hover::after {
-    width: 80%;
+    width: 40%;
 }
 
 
